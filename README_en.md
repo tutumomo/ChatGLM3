@@ -39,7 +39,7 @@ We have released the latest **GLM-4** model, which has made new breakthroughs in
 
 2. **More Complete Function Support:** ChatGLM3-6B adopts a newly designed [Prompt format](PROMPT_en.md), supporting multi-turn dialogues as usual. It also natively supports [tool invocation](tools_using_demo/README_en.md) (Function Call), code execution (Code Interpreter), and Agent tasks in complex scenarios.
 
-3. **More Comprehensive Open-source Series:** In addition to the dialogue model [ChatGLM3-6B](https://huggingface.co/THUDM/chatglm3-6b), the basic model [ChatGLM3-6B-Base](https://huggingface.co/THUDM/chatglm3-6b-base), and the long-text dialogue model [ChatGLM3-6B-32K](https://huggingface.co/THUDM/chatglm3-6b-32k) have also been open-sourced. All these weights are **fully open** for academic research, and **free commercial use is also allowed** after registration via a [questionnaire](https://open.bigmodel.cn/mla/form).
+3. **More Comprehensive Open-source Series:** In addition to the dialogue model [ChatGLM3-6B](https://huggingface.co/THUDM/chatglm3-6b), the basic model [ChatGLM3-6B-Base](https://huggingface.co/THUDM/chatglm3-6b-base), the long-text dialogue model [ChatGLM3-6B-32K](https://huggingface.co/THUDM/chatglm3-6b-32k) and further strengthens the ability to understand long texts [ChatGLM3-6B-128K](https://huggingface.co/THUDM/chatglm3-6b-128k) have also been open-sourced. All these weights are **fully open** for academic research, and **free commercial use is also allowed** after registration via a [questionnaire](https://open.bigmodel.cn/mla/form).
 
 -----
 
@@ -49,11 +49,13 @@ Although every effort has been made to ensure the compliance and accuracy of the
 
 ## Model List
 
-| Model | Seq Length |                                                              Download                                                               
-| :---: |:---------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------:
-| ChatGLM3-6B | 8k |      [HuggingFace](https://huggingface.co/THUDM/chatglm3-6b) \| [ModelScope](https://modelscope.cn/models/ZhipuAI/chatglm3-6b)      
-| ChatGLM3-6B-Base | 8k | [HuggingFace](https://huggingface.co/THUDM/chatglm3-6b-base) \| [ModelScope](https://modelscope.cn/models/ZhipuAI/chatglm3-6b-base) 
-| ChatGLM3-6B-32K | 32k |  [HuggingFace](https://huggingface.co/THUDM/chatglm3-6b-32k) \| [ModelScope](https://modelscope.cn/models/ZhipuAI/chatglm3-6b-32k)  
+|      Model       | Seq Length |                                                                              Download                                                                              
+|:----------------:|:----------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------:
+|   ChatGLM3-6B    |     8k     |                     [HuggingFace](https://huggingface.co/THUDM/chatglm3-6b) \| [ModelScope](https://modelscope.cn/models/ZhipuAI/chatglm3-6b)                      
+| ChatGLM3-6B-Base |     8k     |                [HuggingFace](https://huggingface.co/THUDM/chatglm3-6b-base) \| [ModelScope](https://modelscope.cn/models/ZhipuAI/chatglm3-6b-base)                 
+| ChatGLM3-6B-32K  |    32k     |                 [HuggingFace](https://huggingface.co/THUDM/chatglm3-6b-32k) \| [ModelScope](https://modelscope.cn/models/ZhipuAI/chatglm3-6b-32k)                  
+| ChatGLM3-6B-128K |    128k    |                 [HuggingFace](https://huggingface.co/THUDM/chatglm3-6b-128k) ｜ [ModelScope](https://modelscope.cn/models/ZhipuAI/chatglm3-6b-128k)                 
+
 
 ## Projects
 
@@ -63,6 +65,7 @@ Inference acceleration:
 * [chatglm.cpp](https://github.com/li-plus/chatglm.cpp): Real-time inference on your laptop accelerated by quantization, similar to llama.cpp.
 * [ChatGLM3-TPU](https://github.com/sophgo/ChatGLM3-TPU): Using the TPU accelerated inference solution, it runs about 7.5 token/s in real time on the end-side chip BM1684X (16T@FP16, 16G DDR).
 * [TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM/tree/main): A high-performance GPU-accelerated inference solution developed by NVIDIA, you can refer to these [steps](./tensorrt_llm_demo/README.md) to deploy ChatGLM3.
+* [OpenVINO](https://github.com/openvinotoolkit): A high-performance CPU and GPU accelerated inference solution developed by Intel, you can refer to this [step](./Intel_device_demo/openvino_demo/README.md) to deploy the ChatGLM3-6B model
 
 Efficient fine-tuning:
 * [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory): An excellent, easy-to-use and efficient fine-tuning framework.
@@ -253,6 +256,13 @@ Loading the half-precision ChatGLM3-6B model requires about 13GB of memory. Mach
 ### Multi-GPU Deployment
 
 If you have multiple GPUs, but each GPU's VRAM size is not enough to accommodate the complete model, then the model can be split across multiple GPUs. First, install accelerate: `pip install accelerate`, and then load the model as usual.
+
+
+### OpenVINO Demo
+
+ChatGLM3-6B already supports the use of OpenVINO
+The toolkit accelerates inference and has a greater inference speed improvement on Intel's GPUs and GPU devices. For specific usage, please refer to [OpenVINO Demo](Intel_device_demo/openvino_demo/README.md).
+
 
 ### TensorRT-LLM Demo
 
